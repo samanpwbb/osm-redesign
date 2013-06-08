@@ -1,0 +1,332 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica Neue';
+  background:#141414;
+  background-size:100%;
+  color:#fff;
+  line-height: 1.0;
+  margin:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em {
+  font-style:normal;
+  color:#d46d6d;
+}
+
+strong {
+  font-style:bold;
+  font-weight:
+}
+
+a {
+  color:#cbeea7;
+  text-decoration: none;
+  border-bottom: 3px solid #cbeea7;
+}
+
+.actualsizeimage {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 0;
+  margin-top: 0 !important;
+}
+
+.actualsizeimage {
+  overflow: hidden;
+}
+
+.actualsizeimage  img {
+  margin-left: 0;
+}
+
+img {
+  position: relative;
+  margin: auto;
+  display: block;
+}
+
+img.background {
+  position: fixed;
+  top: 0;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0;
+  left:0;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+div.lead {
+  background-color: white;
+  color:#141414;
+  position: fixed;
+  overflow: hidden;
+}
+
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), cur = 0;
+    if (!s) return;
+    function go(n) {
+        cur = n;
+        var i = 1e3, e = s[n];
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        while (
+            e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) {
+            e.style.fontSize = (i -= 10) + 'px';
+            if (i < 0) break;
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() {
+        go(++cur % (s.length));
+    };
+    document.onkeydown = function(e) {
+        (e.which === 39) && go(Math.min(s.length - 1, ++cur));
+        (e.which === 37) && go(Math.max(0, --cur));
+    };
+    function parse_hash() {
+        return Math.max(Math.min(
+            s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) cur = parse_hash() || cur;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== cur) go(c);
+    };
+
+    go(cur);
+};
+</script></head><body>
+<div>Hi! I'm a designer & I want to help <em>openstreetmap.org</em></div>
+<div class='lead'>ground-up redesign of <em>openstreetmap.org</em></div>
+<div><em>Another</em> redesign of <em>openstreetmap.org</em>???</div>
+<div>Why? Fundamental design problems</div>
+<div>Good design communicates and makes difficult things easy.</div>
+<div>Goal: present a vision</div>
+<div>Something to move iteratively towards</div>
+<div>Credit due:</div>
+<div>Kate Chapman<br/> <a href='http://web.archive.org/web/20121015140144/http://www.maploser.com/2012/03/29/all-i-want-for-openstreetmap-is-simple/'>All I Want for OpenStreetMap is Simple</a> 2012</div>
+<div>Andy Allan<br/> <a href='http://blog.gravitystorm.co.uk/2012/03/01/make-the-hard-things-simple-and-the-simple-things-occasionally-surprisingly-hard/'>Make the hard things simple, and the simple things occasionally surprisingly hard</a> 2012</div>
+<div>Tom Hughes<br/> <a href='http://compton.nu/2010/02/redesigning-the-openstreetmap-web-site/'>Redesigning the OpenStreetMap Web Site</a> 2010</div>
+<div>Mikel Maron<br/> <a href='http://brainoff.com/weblog/2012/03/30/1773'>All I Want for OpenStreetMap is … Social and Attention</a> 2012</div>
+<div>Steve Coast<br/> <a href='http://blog.openstreetmap.org/2010/02/20/new-design-concept-for-openstreetmaporg/'>New design concept for openstreetmap.org</a> 2010</div>
+<div class='lead'>#1&nbsp;</div>
+<div><em>openstreetmap.org</em> needs more appropriate information architecture & content heirarchy</div>
+<div><a target='_blank' href='http://www.openstreetmap.org/'>openstreetmap.org</a></div>
+<div class='actualsizeimage'>
+  <img src='http://cl.ly/image/0K3K3t1m2j11/explosion.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1c3O1k0J2Q0R/home-newuser.png'/>
+</div>
+<div>Rebuild, guided by use cases</div>
+<div>Because design is how it works</div>
+<div>Things should be in place for a reason</div>
+<div>It's not bad, but <em>no cohesive system</em></div>
+<div>Leads to unproductive "design" debates</div>
+<div>Where to put the map key? Marker link? Zoom controls? History tab?</div>
+<div>Feels inspired by <a target='_blank' href='http://www.wikipedia.org/'>Wikipedia</a></div>
+<div>This is a bad model</div>
+<div>Wikipedia is text. <em>wikipedia.com</em> should be text. OpenStreetMap is a map?</div>
+<div>Okay, what is <em>openstreetmap.org</em>?</div>
+<div>Three primary functions</div>
+<div><em>openstreetmap.org</em><br/> is a map for navigating and placefinding</div>
+<div><em>openstreetmap.org</em><br/> is a application for improving the map</div>
+<div><em>openstreetmap.org</em><br/> is a community site for mappers</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1B010t0F203G/home-newuser-actions.png'/>
+</div>
+<div>Secondary functions</div>
+<div><em>openstreetmap.org</em><br/> is a data resource</div>
+<div><em>openstreetmap.org</em><br/> is a data inspection tool</div>
+<div><em>openstreetmap.org</em><br/> is an organization homepage</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/0S2C1K3J2Q2M/home-newuser-secondaryactions.png'/>
+</div>
+<div>Group related functions</div>
+<div class='actualsizeimage'>
+  <img src='http://cl.ly/image/3I193D2Z3f2t/site-diagram.png' />
+</div>
+<div>Some details</div>
+<div>Deliberate design makes things understandable and easy to use</div>
+<div>Don't just "add features"</div>
+<div>Think about what users want to do</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/093j3n1D223H/home-loggedin-conditional.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/2x3B411e2F1l/layer-switcher.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1c3O1k0J2Q0R/home-newuser.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/3z323z0h241L/share-1.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1G3x3e0f353H/share-2.png'/>
+</div>
+<div class='lead'>#2&nbsp;</div>
+<div><em>openstreetmap.org</em> needs a better onboarding experience</div>
+<div>It's not immediately clear what the project is</div>
+<div><a target='_blank' href='http://www.openstreetmap.org/'>let's have a look</a></div>
+<div>The signup process has usability problems</div>
+<div>Poor form design</div>
+<div>Lack of built-in instructions</div>
+<div><a target='_blank' href='http://www.openstreetmap.org/'>let's sign-up</a></div>
+<div>Help link goes to separate website, no differenation between off and on site links</div>
+<div><a target='_blank' href='http://www.openstreetmap.org/'>let's get help</a></div>
+<div>It's not a professional looking website. People trust things that look professional.</div>
+<div>Good design is already good onboarding</div>
+<div>Better first screen</div>
+<div>One clear, primary action</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/0d3w0Y3Z1d0a/home-newuser-action.png'/>
+</div>
+<div>Better login flow</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1c3O1k0J2Q0R/home-newuser.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img class='background' src='http://cl.ly/image/1c3O1k0J2Q0R/home-newuser.png'/>
+  <img src='http://cl.ly/image/3I0t2o0D3d2f/create-account-overlay.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img class='background' src='http://cl.ly/image/1L1W1n353b11/home-logged-in-nohighlight.png'/>
+  <img src='http://cl.ly/image/3d0u2x1W0f0H/terms-overlay.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img class='background' src='http://cl.ly/image/1L1W1n353b11/home-logged-in-nohighlight.png'/>
+  <img src='http://cl.ly/image/2x0V2K2R1L2I/intro-overlay.png'/>
+</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1L1W1n353b11/home-logged-in-nohighlight.png'/>
+</div>
+<div>That last screen inspired by <a target='_blank' href='http://osmlab.github.io/welcome-osm/'>http://osmlab.github.io/welcome-osm/</a></div>
+<div>Tooltips</div>
+<div class='actualsizeimage'>
+    <img src='http://cl.ly/image/3P403e0J3x1W/tooltip.png'/>
+</div>
+<div>Help landing page</div>
+<div>Stay on openstreetmap.org, explain what the external resources do <em>(wiki, Q&A, learnOSM)</em></div>
+<div class='actualsizeimage'>
+    <img src='http://cl.ly/image/2z22461b1U42/help.png'/>
+</div>
+<div class='lead'>#3&nbsp;</div>
+<div><em>openstreetmap.org</em> doesn't do enough to connect us as mappers</div>
+<div><a target='_blank' href='http://www.openstreetmap.org/user/lxbarth'>my friend alex</a></div>
+<div>What's a better model?</div>
+<div>Exposes friends & groups, show off popularity & activity</div>
+<div><a target='_blank' href='https://www.facebook.com/lxbarth'>my friend alex</a></div>
+<div>Even better model: Strava</div>
+<div>Social network based around excercise</div>
+<div>Designed to incentivize activity</div>
+<div>Opens with <em>activity summary</em>. Socially, about bragging and status.</div>
+<div>Follows with <em>activity feed</em>. Socially, about encouragement and advice.</div>
+<div><a target='_blank' href='http://app.strava.com/athletes/1158395'>my friend alex</a></div>
+<div>Replace excercise with mapping</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1a2Q173S1x12/community-profile.png'/>
+</div>
+<div>Find friends and groups</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1E3u0a2q2i3A/community-profile-friends.png'/>
+</div>
+<div>Interact with friend</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/190e071j0F2A/community-profile-dropdown.png'/>
+</div>
+<div>The <em>activity summary</em></div>
+<div><a target='_blank' href='http://hdyc.neis-one.org/?lxbarth'>alex on hdyc</a></div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1b0Q0L1F1O3o/community-profile-summary.png'/>
+</div>
+<div>Compare yourself with others</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1z2F1r1r1x2k/community-profile-graph.png'/>
+</div>
+<div>Gamification!</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/032o2A0g470u/community-profile-badges.png'/>
+</div>
+<div>The unified <em>activity feed</em></div>
+<div>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/2a2H0U3E0S1A/community-profile-filter.png'/>
+</div>
+<div>Replaces 'user edits' page</div>
+<div>
+  <img class='background' src='http://cl.ly/image/3C0K1G441i0V/general-bg.png'/>
+  <img src='http://cl.ly/image/1a2Q173S1x12/community-profile.png' />
+</div>
+<div>
+  <img class='background' src='http://cl.ly/image/34303M3L3V2W/community-activity-on-bg.png'/>
+  <img src='http://cl.ly/image/3w0z0M3B153q/community-profile-hover.png' />
+</div>
+<div>The beauty of building entire site around a map</div>
+<div>The master feed</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/1P0J2a392b3H/community-landing-bg.png'/>
+  <img src='http://cl.ly/image/421J3m2Y2z46/community-landing-fg.png' />
+</div>
+<div>Again, filterable by activity type</div>
+<div>Replaces, blog, history, and notes</div>
+<div>Filterable by user type</div>
+<div class='actualsizeimage'>
+  <img class='background' src='http://cl.ly/image/1P0J2a392b3H/community-landing-bg.png'/>
+  <img src='http://cl.ly/image/3Q010V0X1X44/community-landing-fg-dropdown.png' />
+</div>
+<div>This is all I have right now.</div>
+<div class='lead'>TO DO:</div>
+<div>Groups!</div>
+<div>History as an in-depth data inspection tool</div>
+<div>Changeset / node / way pages</div>
+<div>Tighter editor integration</div>
+<div>Using data - new workflow</div>
+<div>Friendlier default base map style</div>
+<div class='lead'>Where can we start?</div>
+<div>Three clear next actions:</div>
+<div><em>1. Improve registration flow</em></div>
+<div>better intro modal, form styles, and new welcome page</div>
+<div><em>2. Re-organize map tools</em></div>
+<div>group together on the right: key, zoom controls, layer switcher, share links</div>
+<div></em>3. Add user activity feeds.</em></div>
+<div>Can be "dumb" to start with: move diary entries and edits out of tiny subnav</div>
+<div><a target='_blank' href='https://github.com/samanpwbb/osm-redesign'>check out the source SVG at github.com/samanpwbb/osm-redesign</a></div>
+</div>
